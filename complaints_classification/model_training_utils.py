@@ -2,18 +2,15 @@ import os
 
 import pandas as pd
 
-from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.metrics import accuracy_score, f1_score
-from sklearn.preprocessing import FunctionTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 
 import re
 import nltk
-print('downloading...')
-nltk.download('wordnet')
-nltk.download('omw-1.4')
-print('...done downloading')
+#uncomment the next two lines if running for the first time
+# nltk.download('wordnet') 
+# nltk.download('omw-1.4')
 import itertools
 from nltk.tokenize import sent_tokenize
 from nltk.tokenize import word_tokenize
