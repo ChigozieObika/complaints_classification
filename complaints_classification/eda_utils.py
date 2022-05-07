@@ -9,9 +9,9 @@ class EdaDf():
         self.df = df
     
     def group_by(self, count_by, *args):
-        grouped_by_state_only_data = self.df.groupby(list(args))[count_by].count()
-        grouped_by_state_only_data = pd.DataFrame(grouped_by_state_only_data)
-        return grouped_by_state_only_data
+        grouped_by_data = self.df.groupby(list(args))[count_by].count()
+        grouped_by_data = pd.DataFrame(grouped_by_data)
+        return grouped_by_data
     
 
 class EdaDfPlotReady():
@@ -98,6 +98,5 @@ class Plot():
             x='date',  y='count_by_date', linewidth=2.5, ax = ax[2,1])
         ax[2,1].set_title('Count of Complaints by Date - Other', fontsize=14, fontweight='bold')
         ax[2,1].set_ylim(0, 100)
-
         plt.show()
-            
+        
