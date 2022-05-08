@@ -1,7 +1,9 @@
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
 from flask import Flask, render_template, request
 import pickle
 import pandas as pd
-import matplotlib.pyplot as plt
 import seaborn as sns
 
 app = Flask(__name__)
@@ -10,14 +12,14 @@ app = Flask(__name__)
 def hello_world():
     request_type_str = request.method
     if request_type_str == 'GET':
-        return render_template('index.html', display="static\static daily count.png")
+        return render_template('index.html', display='static/static daily count.png')
     else:
         csvfile = request.files['csvfile']
         inputfile = "./input_files/" + csvfile.filename
         csvfile.save(inputfile)
         with open('lgr_model.pkl', 'rb') as file:
                 model = pickle.load(file)
-        path = "static\model_predictions_report.png"
+        path = 'static/model_predictions_report.png'
         deploy_plot(inputfile, model, path)
         return render_template('index.html', display=path)
     
@@ -33,13 +35,15 @@ def deploy_plot(inputfile, model, path):
         test_input.reset_index(drop=True)
         filename = 'predictions.csv'
         test_input.to_csv (filename, index = False, header=True)
-        fig, ax = plt.subplots(nrows=1, ncols=2, figsize=(16, 8))
+        fig, ax = plt.subplots(nrows=1, ncols=2, figsize=(16, 8), dpi=200)
         sns.countplot(
                 x='predictions',
                 data=test_input,
                 dodge=False,
                 hue= 'predictions', ax = ax[0])
-        ax[0].set_title('Count of Predicted Categories', fontsize=16)
+        ax[0].set_title('Count of Predicted Categories', fontsize=16, fontweight='bold')
+        ax[0].set_ylabel('Counts', fontsize=12, fontweight='bold')
+        ax[0].set_xlabel('Predictions', fontsize=12, fontweight='bold')
         ax[0].set_xticks([])
         for p in ax[0].patches:
                 ax[0].annotate(f'{p.get_height()}', (p.get_x()+0.3, p.get_height()), ha='center', va='top', color='white', size=10)
@@ -53,7 +57,9 @@ def deploy_plot(inputfile, model, path):
         dates = grouped_by_data.date.unique()
         ax[1].set_xticks([dates[0], dates[len(dates)//2], dates[-1]])
         ax[1].set_xticklabels([dates[0], dates[len(dates)//2], dates[-1]])
-        ax[1].set_title('Daily Count of Complaints', fontsize=16)
+        ax[1].set_ylabel('Counts', fontsize=12, fontweight='bold')
+        ax[1].set_xlabel('Days', fontsize=12, fontweight='bold')
+        ax[1].set_title('Daily Count of Complaints', fontsize=16, fontweight='bold')
         fig.suptitle('Model Predictions Report', fontsize=20, fontweight='bold')
         plt.savefig(path)
         
