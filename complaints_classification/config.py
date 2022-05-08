@@ -7,3 +7,11 @@ CLASS_PALETTE = {'billings':'red', 'internet_problems':'green',
                             'other':'orange'}
 
 CLASSES = ['billings', 'internet_problems', 'poor_customer_service', 'data_caps', 'other']
+
+MODIFY_CLASSES = {'Customer Complaint':'customer_complaint', 
+                    'Category':'category', 
+                    'Date':'date',
+                    'City':'city', 
+                    'State':'state', 
+                    'Zip code':'zip_code', 
+                    'Description':'description'}

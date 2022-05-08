@@ -69,7 +69,7 @@ class Plot():
         plt.ylabel('Percentage Count', fontsize=10, fontweight='bold')
         plt.xlabel('State_Groups', fontsize=10, fontweight='bold')
         plt.legend(loc = 2, bbox_to_anchor = (1,1))
-        plt.savefig(f'Percentage Count of {category} by States.png')
+        plt.savefig(f'image_files/Percentage Count of {category} by States.png')
         plt.show()
 
     def plot_category_trend(self):

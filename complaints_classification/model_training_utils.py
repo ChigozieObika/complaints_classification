@@ -1,5 +1,9 @@
 import os
 
+import warnings
+warnings.filterwarnings('ignore')
+
+
 import pandas as pd
 import pickle
 import matplotlib.pyplot as plt
@@ -8,6 +12,8 @@ import seaborn as sns
 from sklearn.metrics import accuracy_score, f1_score
 from sklearn.pipeline import Pipeline
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
+
+import config
 
 import re
 import nltk
@@ -19,6 +25,33 @@ from nltk.tokenize import sent_tokenize
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
+
+class PrepareData():
+    def __init__(self, df) -> None:
+        self.df = df
+    
+    def drop_duplicates(self):
+        processed_data = self.df.drop_duplicates(keep='first')
+        return processed_data
+    
+    def modify(self):
+        self.df.rename(columns = config.MODIFY_CLASSES, inplace = True)
+        self.df['category'] = self.df['category'].replace(['Billings', 'Internet Problems', 'Poor Customer Service', 'Data Caps', 'Other', 'other'], 
+                            [0, 1, 2, 3, 4, 4])
+        self.df['state'] = self.df['state'].replace('District of Columbia', 'District Of Columbia')
+        return self.df
+
+    def extract(self):
+        self.df[["description", "fcc_comments"]] = self.df["description"].str.split(
+                                            "- - - - - - - - - - - - - - - - - - - - -",
+                                            n=1,expand=True)
+        return self.df
+
+    def train_test_split(self):
+        input_features_train, input_features_test, y_train, y_test = train_test_split(input_features, y, test_size=0.2, random_state=16)
+        X_train = input_features_train.description
+        X_test = input_features_test.description
+
 
 def create_pipeline(clf):
     pipeline = Pipeline([('vect', CountVectorizer(ngram_range = (1, 1))),
@@ -73,8 +106,8 @@ def process_text(text_series):
     df["processed"] = df["processed"].apply(lambda x: " ".join(x)) 
     return df["processed"] 
 
-def deploy_plot(inputfile, modelfile = 'lgr_model.pkl'):
-        test_input = pd.read_csv(inputfile)
+def deploy_plot(filepath, modelfile = 'lgr_model.pkl'):
+        test_input = pd.read_csv(filepath)
         test_input = pd.DataFrame(test_input)
         test_input_variables = test_input['description']
         with open(modelfile, 'rb') as file:
@@ -85,8 +118,8 @@ def deploy_plot(inputfile, modelfile = 'lgr_model.pkl'):
                                         [0, 1, 2, 3, 4], 
                                         ['Billings', 'Internet Problems', 'Poor Customer Service', 'Data Caps', 'Other'])
         test_input.reset_index(drop=True)
-        filename = 'predictions.csv'
-        test_input.to_csv (filename, index = False, header=True)
+        filepath_name = 'datasets/predictions.csv'
+        test_input.to_csv (filepath_name, index = False, header=True)
         fig, ax = plt.subplots(nrows=1, ncols=2, figsize=(16, 8))
         sns.countplot(
                 x='predictions',
@@ -109,5 +142,5 @@ def deploy_plot(inputfile, modelfile = 'lgr_model.pkl'):
         ax[1].set_xticklabels([dates[0], dates[len(dates)//2], dates[-1]])
         ax[1].set_title('Daily Count of Complaints', fontsize=16)
         fig.suptitle('Model Predictions Report', fontsize=20, fontweight='bold')
-        plt.savefig('Model Predictions Report.png')
+        plt.savefig('images_files/Model Predictions Report.png')
         plt.show()
