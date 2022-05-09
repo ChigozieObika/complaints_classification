@@ -51,14 +51,14 @@ Use a multi-class classifier to identify the type of challenge in customer compl
   ![Confusion matrix](readme_plots\Confusion Matrix for LogisticRegression Model.png)
 </p>
 
-### Counts of Predicted Categories of Complaints
+### Deployed App
 <p align="center" style="margin-bottom: 0px !important;">
-  ![Counts and Trend of Complaints](readme_plots\Model Predictions Report.png)
+  ![Counts and Trend of Complaints](readme_plots\deploy_gif.gif)
 </p>
 
 ### Interactive Dashboard
 <p align="center" style="margin-bottom: 0px !important;">
-  ![Dashboard](readme_plots\power_BI_report_page.jpg)
+  ![Dashboard](readme_plots\dashboard_gif.gif)
 </p>
 
 ## Limitation and Recommendations
