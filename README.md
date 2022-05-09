@@ -35,9 +35,7 @@ Use a multi-class classifier to identify the type of challenge in customer compl
 ## Summary of Results
 
 ### Model Training Journey Map
-<p align="center" style="margin-bottom: 0px !important;">
-  ![Journey Map](readme_plots\Performance Metrics for Classifiers.png)
-</p>
+<img src="complaints_classification/readme_plots/Performance Metrics for Classifiers.png" width=500 height=300 />
 
 - ***The final model used is: LogisticRegression Classifier***
 (Note that though the LGR_nltk classifier has the best performance, the performance gain is not significant compared to the resources employed to achieve it)
@@ -47,19 +45,13 @@ Use a multi-class classifier to identify the type of challenge in customer compl
 - The selected model also has the best scores for accuracy and weighted f1 scores
 
 ### Confusion matrix of LogisticRegression Classifier
-<p align="center" style="margin-bottom: 0px !important;">
-  ![Confusion matrix](readme_plots\Confusion Matrix for LogisticRegression Model.png)
-</p>
+<img src="complaints_classification/readme_plots/Confusion Matrix for LogisticRegression Model.png" width=500 height=300 />
 
-### Counts of Predicted Categories of Complaints
-<p align="center" style="margin-bottom: 0px !important;">
-  ![Counts and Trend of Complaints](readme_plots\Model Predictions Report.png)
-</p>
+### Deployed App
+<img src="complaints_classification/readme_plots/deploy.gif" width=500 height=300 />
 
 ### Interactive Dashboard
-<p align="center" style="margin-bottom: 0px !important;">
-  ![Dashboard](readme_plots\power_BI_report_page.jpg)
-</p>
+<img src="complaints_classification/readme_plots/dashboard.gif" width=500 height=300 />
 
 ## Limitation and Recommendations
 
