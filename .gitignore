@@ -132,3 +132,8 @@ complaints_classification\Scripts
 complaints_classification\share
 complaints_classification\Lib
 complaints_classification\image_files
+complaints_classification/Scripts/
+complaints_classification/datasets/
+complaints_classification/image_files/
+complaints_classification/share/
+complaints_classification/xgboost/

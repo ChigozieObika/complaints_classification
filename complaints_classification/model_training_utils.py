@@ -47,11 +47,6 @@ class PrepareData():
                                             n=1,expand=True)
         return self.df
 
-    def train_test_split(self):
-        input_features_train, input_features_test, y_train, y_test = train_test_split(input_features, y, test_size=0.2, random_state=16)
-        X_train = input_features_train.description
-        X_test = input_features_test.description
-
 
 def create_pipeline(clf):
     pipeline = Pipeline([('vect', CountVectorizer(ngram_range = (1, 1))),
@@ -120,13 +115,15 @@ def deploy_plot(filepath, modelfile = 'lgr_model.pkl'):
         test_input.reset_index(drop=True)
         filepath_name = 'datasets/predictions.csv'
         test_input.to_csv (filepath_name, index = False, header=True)
-        fig, ax = plt.subplots(nrows=1, ncols=2, figsize=(16, 8))
+        fig, ax = plt.subplots(nrows=1, ncols=2, figsize=(16, 8), dpi = 200)
         sns.countplot(
                 x='predictions',
                 data=test_input,
                 dodge=False,
                 hue= 'predictions', ax = ax[0])
-        ax[0].set_title('Count of Predicted Categories', fontsize=16)
+        ax[0].set_title('Count of Predicted Categories', fontsize=16, fontweight='bold')
+        ax[0].set_ylabel('Counts', fontsize=12, fontweight='bold')
+        ax[0].set_xlabel('Predictions', fontsize=12, fontweight='bold')
         ax[0].set_xticks([])
         for p in ax[0].patches:
                 ax[0].annotate(f'{p.get_height()}', (p.get_x()+0.3, p.get_height()), ha='center', va='top', color='white', size=10)
@@ -140,7 +137,9 @@ def deploy_plot(filepath, modelfile = 'lgr_model.pkl'):
         dates = grouped_by_data.date.unique()
         ax[1].set_xticks([dates[0], dates[len(dates)//2], dates[-1]])
         ax[1].set_xticklabels([dates[0], dates[len(dates)//2], dates[-1]])
-        ax[1].set_title('Daily Count of Complaints', fontsize=16)
-        fig.suptitle('Model Predictions Report', fontsize=20, fontweight='bold')
-        plt.savefig('images_files/Model Predictions Report.png')
+        ax[1].set_ylabel('Counts', fontsize=12, fontweight='bold')
+        ax[1].set_xlabel('Days', fontsize=12, fontweight='bold')
+        ax[1].set_title('Daily Count of Complaints', fontsize=16, fontweight='bold')
+        fig.suptitle('Consumer Complaints Tracking', fontsize=20, fontweight='bold')
+        plt.savefig('readme_plots\Model Predictions Report.png')
         plt.show()
