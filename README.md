@@ -4,11 +4,29 @@
 <p align = "center">
 <img src="banner.jpg" alt="alt text" title="Customer Complaints Tracking" height="450"/>
 </p>
+
+[![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
+![Python version](https://img.shields.io/badge/Python%20version-3.10%2B-lightgrey)
+![GitHub last commit](https://img.shields.io/github/last-commit/ChigozieObika/complaints_classification)
+![GitHub repo size](https://img.shields.io/github/repo-size/ChigozieObika/complaints_classification)
   
 ## Key Takeaway: Collected customer complaints are automatically and consistently classified periodically. These classified complaints are analysed based on business objectives on the customer complaint tracking dashboard.
 
 ## Author
 - [@ChigozieObika](https://www.github.com/ChigozieObika)
+
+
+## Table of Contents
+
+  - [Business problem](#business-problem)
+  - [Summary of Solution](#summary-of-solution)
+  - [Data source](#data-source)
+  - [Steps to Solution](#steps-to-solution)
+  - [Tech Stack](#tech-stack)
+  - [Summary of Results](#summary-of-results)
+  - [Limitation and Recommendations](#limitation-and-recommendations)
+  - [Contribution](#contribution)
+  - [License](#license)
 
 ## Business problem
 A communications company was fined millions of dollars because of the volume of complaints from their customers by a communications regulatory agency. Besides avoiding the fines, the company would like to resolve customers pain points swiftly to avoid losing customers and potentially revenues. The company would also like to have their eyes on complaints hotspots so they can schedule preventive and corrective maintenance projects.
