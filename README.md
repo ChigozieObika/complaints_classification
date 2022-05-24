@@ -71,6 +71,51 @@ Use a multi-class classifier to identify the type of challenge in customer compl
 ### Interactive Dashboard
 <img src="complaints_classification/readme_plots/dashboard.gif" width=500 height=300 />
 
+### Repository Structure
+```
+.
+├── LICENSE
+├── README.md
+├── app
+│   ├── Procfile
+│   ├── __pycache__
+│   │   └── app.cpython-310.pyc
+│   ├── app.py
+│   ├── input_files
+│   │   ├── static.csv
+│   │   └── test_input.csv
+│   ├── lgr_model.pkl
+│   ├── predictions.csv
+│   ├── requirements.txt
+│   ├── static
+│   │   ├── model_predictions_report.png
+│   │   └── static daily count.png
+│   └── templates
+│       └── index.html
+├── banner.jpg
+├── complaints_classification
+│   ├── __pycache__
+│   │   ├── config.cpython-310.pyc
+│   │   ├── eda_utils.cpython-310.pyc
+│   │   ├── model_training_utils.cpython-310.pyc
+│   │   └── pipeline_config.cpython-310.pyc
+│   ├── config.py
+│   ├── eda.ipynb
+│   ├── eda_utils.py
+│   ├── lgr_model.pkl
+│   ├── model_training.ipynb
+│   ├── model_training_utils.py
+│   ├── pipeline_config.py
+│   └── readme_plots
+│       ├── Confusion Matrix for LogisticRegression Model.png
+│       ├── Model Predictions Report.png
+│       ├── Performance Metrics for Classifiers.png
+│       ├── dashboard.gif
+│       ├── deploy.gif
+│       └── power_BI_report_page.jpg
+└── requirements.txt
+```
+
 ## Limitation and Recommendations
 
 - The dataset was not labelled by subject matter experts.
