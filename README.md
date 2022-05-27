@@ -66,6 +66,7 @@ Use a multi-class classifier to identify the type of challenge in customer compl
 <img src="complaints_classification/readme_plots/Confusion Matrix for LogisticRegression Model.png" width=500 height=300 />
 
 ### Deployed App
+![App](https://complaintsclassify.herokuapp.com/). The test dataset for the app is [here](https://drive.google.com/file/d/1RrZRWnkiQm0ldQv-AjHInLGaseqhjccz/view?usp=sharing)
 <img src="complaints_classification/readme_plots/deploy.gif" width=500 height=300 />
 
 ### Interactive Dashboard
