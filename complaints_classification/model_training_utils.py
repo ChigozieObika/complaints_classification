@@ -141,5 +141,5 @@ def deploy_plot(filepath, modelfile = 'lgr_model.pkl'):
         ax[1].set_xlabel('Days', fontsize=12, fontweight='bold')
         ax[1].set_title('Daily Count of Complaints', fontsize=16, fontweight='bold')
         fig.suptitle('Consumer Complaints Tracking', fontsize=20, fontweight='bold')
-        plt.savefig('readme_plots\Model Predictions Report.png')
+        plt.savefig('readme_plots/Model Predictions Report.png')
         plt.show()
